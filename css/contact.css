@@ -1,0 +1,427 @@
+/* Contact Page Specific Stsyles */
+.contact-container {
+    position: relative;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #0ff;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+/* From Uiverse.io by andrew-demchenk0 */
+.form {
+    --input-focus: #2d8cf0;
+    --font-color: #514141;
+    --font-color-sub: #666;
+    --bg-color: #ad9e9e;
+    --main-color: #323232;
+    padding: 20px;
+    background: lightgrey;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+}
+
+.title {
+    color: var(--font-color);
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.title span {
+    color: var(--font-color-sub);
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.input {
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--font-color);
+    padding: 5px 10px;
+    outline: none;
+}
+
+.input::placeholder {
+    color: var(--font-color-sub);
+    opacity: 0.8;
+}
+
+.input:focus {
+    border: 2px solid var(--input-focus);
+}
+
+.login-with {
+    display: flex;
+    gap: 20px;
+}
+
+.button-log {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    color: var(--font-color);
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--main-color);
+}
+
+.button-log:active,
+.button-confirm:active {
+    box-shadow: 0px 0px var(--main-color);
+    transform: translate(3px, 3px);
+}
+
+.button-confirm {
+    margin: 50px auto 0 auto;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--font-color);
+    cursor: pointer;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+label {
+    color: #0ff;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #0ff;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    border-color: #f0f;
+}
+
+/* Neon glow effect on hover */
+input:hover,
+textarea:hover {
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+}
+
+/* Custom submit button */
+button[type="submit"] {
+    background: transparent;
+    color: #0ff;
+    border: 2px solid #0ff;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button[type="submit"]:hover {
+    background: #0ff;
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg,
+            transparent,
+            rgba(0, 255, 255, 0.4),
+            transparent);
+    transition: 0.5s;
+}
+
+button[type="submit"]:hover::before {
+    left: 100%;
+}
+
+/* Error message styling */
+.error-message {
+    color: #f0f;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+input:invalid+.error-message,
+textarea:invalid+.error-message {
+    opacity: 1;
+}
+
+/* Success message styling */
+.message-status {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.message-status.success {
+    background: rgba(0, 255, 128, 0.1);
+    border: 1px solid #0f8;
+    color: #0f8;
+    opacity: 1;
+}
+
+.message-status.error {
+    background: rgba(255, 0, 128, 0.1);
+    border: 1px solid #f08;
+    color: #f08;
+    opacity: 1;
+}
+
+/* Loading animation */
+.loader {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #0ff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .contact-container {
+        padding: 1rem;
+    }
+
+    input,
+    textarea {
+        font-size: 0.9rem;
+    }
+
+    button[type="submit"] {
+        width: 100%;
+    }
+}
+
+/* Additional contact form styles */
+.contact-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Form field animations */
+input,
+textarea {
+    transition: transform 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+    transform: scale(1.01);
+}
+
+/* Enhanced validation styles */
+input:required:valid,
+textarea:required:valid {
+    border-color: var(--neon-green);
+}
+
+input:required:invalid,
+textarea:required:invalid {
+    border-color: var(--neon-pink);
+}
+
+/* Animated background for form container */
+.contact-container {
+    animation: borderGlow 4s infinite;
+}
+
+@keyframes borderGlow {
+
+    0%,
+    100% {
+        border-color: var(--neon-purple);
+    }
+
+    50% {
+        border-color: var(--neon-blue);
+    }
+}
+
+/* Enhanced button styles */
+button[type="submit"] {
+    min-width: 200px;
+}
+
+/* Responsive enhancements */
+@media (max-width: 600px) {
+    .contact-wrapper {
+        padding: 1rem;
+    }
+
+    input,
+    textarea {
+        padding: 0.8rem;
+    }
+}
+
+/* New Additions */
+.additional-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 3rem;
+    padding: 2rem;
+    border-top: 2px solid var(--neon-purple);
+}
+
+.info-card,
+.schedule-card {
+    background: rgba(10, 10, 21, 0.8);
+    padding: 1.5rem;
+    border: 1px solid var(--neon-blue);
+    margin: 1rem 0;
+}
+
+.social-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.social-link {
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.social-link.discord {
+    border-color: #5865F2;
+    color: #5865F2;
+}
+
+.social-link.twitter {
+    border-color: #1DA1F2;
+    color: #1DA1F2;
+}
+
+.social-link.instagram {
+    border-color: #E1306C;
+    color: #E1306C;
+}
+
+.social-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    text-shadow: 0 0 10px currentColor;
+}
+
+.emergency-alert {
+    color: var(--neon-pink);
+    border: 1px solid;
+    padding: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+    animation: pulseAlert 2s infinite;
+}
+
+@keyframes pulseAlert {
+    0% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.8;
+    }
+}
+
+.neon-pulse {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.1);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

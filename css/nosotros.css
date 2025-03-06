@@ -1,0 +1,176 @@
+/* About Page Specific Styles */
+.about-main {
+    background: linear-gradient(45deg, #0a0a15, #1a1a2e);
+    overflow: hidden;
+}
+
+.cyber-hero {
+    position: relative;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, 
+        rgba(0,255,255,0.1) 0%, 
+        rgba(183,0,255,0.2) 100%);
+    overflow: hidden;
+}
+
+.glitch-container {
+    position: relative;
+    text-align: center;
+}
+
+.cyber-glitch {
+    color: var(--neon-green);
+    font-size: 4rem;
+    text-transform: uppercase;
+    position: relative;
+    animation: glitch 2s infinite;
+}
+
+.cyber-glitch::before,
+.cyber-glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.cyber-glitch::before {
+    left: 3px;
+    text-shadow: -3px 0 var(--neon-pink);
+    animation: glitch-before 2s infinite;
+}
+
+.cyber-glitch::after {
+    left: -3px;
+    text-shadow: 3px 0 var(--neon-blue);
+    animation: glitch-after 2s infinite;
+}
+
+.subtitle {
+    color: var(--neon-purple);
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    text-shadow: 0 0 10px var(--neon-purple);
+}
+
+.hologram-card {
+    background: rgba(10, 10, 21, 0.8);
+    border: 2px solid var(--neon-blue);
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 800px;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+}
+
+.hologram-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg,
+        transparent 40%,
+        rgba(0,255,255,0.1) 50%,
+        transparent 60%);
+    animation: scan 6s linear infinite;
+}
+
+.timeline-grid {
+    display: grid;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.timeline-card {
+    background: rgba(0,0,0,0.7);
+    border-left: 4px solid var(--neon-purple);
+    padding: 1.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.timeline-card:hover {
+    transform: translateX(10px);
+    border-color: var(--neon-green);
+}
+
+.timeline-year {
+    color: var(--neon-pink);
+    font-size: 2rem;
+    position: absolute;
+    left: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.mission-vision-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.cyber-card {
+    padding: 2rem;
+    border: 2px solid;
+    position: relative;
+    overflow: hidden;
+}
+
+.cyber-card.mission {
+    border-color: var(--neon-green);
+    background: linear-gradient(45deg, #0a1510, #0a0a15);
+}
+
+.cyber-card.vision {
+    border-color: var(--neon-blue);
+    background: linear-gradient(45deg, #0a0a15, #100a15);
+}
+
+.community-section {
+    text-align: center;
+    padding: 4rem 0;
+    background: rgba(183,0,255,0.1);
+    margin-top: 2rem;
+    position: relative;
+}
+
+.community-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg,
+        transparent 40%,
+        rgba(0,255,255,0.1) 50%,
+        transparent 60%);
+    animation: scan 8s linear infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-3px, 3px); }
+    40% { transform: translate(-3px, -3px); }
+    60% { transform: translate(3px, 3px); }
+    80% { transform: translate(3px, -3px); }
+    100% { transform: translate(0); }
+}
+
+@media (max-width: 768px) {
+    .cyber-glitch {
+        font-size: 2.5rem;
+    }
+    
+    .timeline-year {
+        position: static;
+        transform: none;
+        margin-bottom: 1rem;
+    }
+    
+    .mission-vision-grid {
+        grid-template-columns: 1fr;
+    }
+}
