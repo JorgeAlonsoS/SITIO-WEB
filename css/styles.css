@@ -1,403 +1,69 @@
-/* Estilos generales */
+/* Importación de fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* Variables globales */
+:root {
+    --neon-primary: #0ff;
+    --neon-secondary: #f0f;
+    --neon-green: #37FF8B;
+    --neon-purple: #b700ff;
+    --neon-blue: #00f;
+    --neon-pink: #ff00ff;
+    --bg-dark: #0a0a0a;
+    --text-glow: 0 0 10px var(--neon-primary);
+}
+
+/* Reset y estilos base */
 * {
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
-    :root {
-        --neon-primary: #0ff;
-        --neon-secondary: #f0f;
-        --bg-dark: #0a0a0a;
-        --text-glow: 0 0 10px var(--neon-primary);
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: 'Orbitron', sans-serif;
-        background: var(--bg-dark);
-        color: #fff;
-        line-height: 1.6;
-        min-height: 100vh;
-        position: relative;
-        overflow-x: hidden;
-    }
-
-    /* Animated Background */
-    body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(45deg,
-                transparent 48%,
-                rgba(0, 255, 255, 0.05) 50%,
-                transparent 52%);
-        background-size: 100px 100px;
-        animation: matrix 20s linear infinite;
-        z-index: -1;
-    }
-
-    @keyframes matrix {
-        0% {
-            background-position: 0 0;
-        }
-
-        100% {
-            background-position: 100px 100px;
-        }
-    }
-
-    /* Navigation */
-    nav {
-        background: rgba(198, 192, 122, 0.8);
-        border-bottom: 2px solid var(--neon-primary);
-        padding: 1rem;
-        position: relative;
-    }
-
-    /* From Uiverse.io by satyamchaudharydev */
-    /* === removing default button style ===*/
-    .button {
-        margin: 0;
-        height: auto;
-        background: transparent;
-        padding: 0;
-        border: none;
-        cursor: pointer;
-    }
-
-    /* button styling */
-    .button {
-        --border-right: 6px;
-        --text-stroke-color: rgb(255, 255, 255);
-        --animation-color: #37FF8B;
-        --fs-size: 2em;
-        letter-spacing: 3px;
-        text-decoration: none;
-        font-size: var(--fs-size);
-        font-family: "Arial";
-        position: relative;
-        text-transform: uppercase;
-        color: transparent;
-        -webkit-text-stroke: 1px var(--text-stroke-color);
-    }
-
-    /* this is the text, when you hover on button */
-    .hover-text {
-        position: absolute;
-        box-sizing: border-box;
-        content: attr(data-text);
-        color: var(--animation-color);
-        width: 0%;
-        inset: 0;
-        border-right: var(--border-right) solid var(--animation-color);
-        overflow: hidden;
-        transition: 0.5s;
-        -webkit-text-stroke: 1px var(--animation-color);
-    }
-
-
-    /* hover */
-    .button:hover .hover-text {
-        width: 100%;
-        filter: drop-shadow(0 0 23px var(--animation-color))
-    }
-
-    nav::before {
-        content: '';
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background: var(--neon-primary);
-        filter: blur(5px);
-    }
-
-    nav ul {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-    }
-
-    nav a {
-        color: #fff;
-        text-decoration: none;
-        padding: 0.5rem 1rem;
-        position: relative;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        transition: color 0.3s;
-    }
-
-    nav a::before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: var(--neon-primary);
-        transition: width 0.3s;
-    }
-
-    nav a:hover {
-        color: var(--neon-primary);
-        text-shadow: var(--text-glow);
-    }
-
-    nav a:hover::before {
-        width: 100%;
-    }
-
-
-    nav a.active {
-        color: var(--neon-primary);
-        text-shadow: var(--text-glow);
-    }
-
-    /* From Uiverse.io by kamehame-ha */
-    .cards {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .cards .red {
-        background-color: #142ebd;
-    }
-
-    .cards .blue {
-        background-color: #376619;
-    }
-
-    .cards .green {
-        background-color: #791717;
-    }
-
-    .cards .card {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        text-align: center;
-        height: 100px;
-        width: 250px;
-        border-radius: 10px;
-        color: srgb(255, 255, 255);
-        cursor: pointer;
-        transition: 400ms;
-    }
-
-    .cards .card p.tip {
-        font-size: 1em;
-        font-weight: 700;
-    }
-
-    .cards .card p.second-text {
-        font-size: .7em;
-    }
-
-    .cards .card:hover {
-        transform: scale(1.1, 1.1);
-    }
-
-    .cards:hover>.card:not(:hover) {
-        filter: blur(10px);
-        transform: scale(0.9, 0.9);
-    }
-
-    /* Main Content */
-    main {
-        max-width: 1200px;
-        margin: 2rem auto;
-        padding: 2rem;
-        background: rgba(0, 0, 0, 0.7);
-        border: 1px solid var(--neon-primary);
-        box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-    }
-
-    h1 {
-        color: var(--neon-primary);
-        text-shadow: var(--text-glow);
-        margin-bottom: 2rem;
-        font-size: 2.5rem;
-        text-align: center;
-        animation: glitch 2s infinite;
-    }
-
-    @keyframes glitch {
-        0% {
-            text-shadow: var(--text-glow);
-        }
-
-        2% {
-            text-shadow: 2px 2px var(--neon-secondary);
-        }
-
-        4% {
-            text-shadow: -2px -2px var(--neon-primary);
-        }
-
-        6% {
-            text-shadow: var(--text-glow);
-        }
-
-        100% {
-            text-shadow: var(--text-glow);
-        }
-    }
-
-    /* Service Cards */
-    .service-card {
-        border: 1px solid var(--neon-primary);
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        background: rgba(0, 0, 0, 0.5);
-        transition: all 0.3s;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .service-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg,
-                transparent,
-                rgba(0, 255, 255, 0.2),
-                transparent);
-        transition: 0.5s;
-    }
-
-    .service-card:hover::before {
-        left: 100%;
-    }
-
-    .service-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-    }
-
-    /* Form Styles */
-    form {
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
-    .form-group {
-        margin-bottom: 1.5rem;
-        position: relative;
-    }
-
-    input,
-    textarea {
-        width: 100%;
-        padding: 0.8rem;
-        background: rgba(0, 0, 0, 0.7);
-        border: 1px solid var(--neon-primary);
-        color: #fff;
-        font-family: 'Orbitron', sans-serif;
-    }
-
-    input:focus,
-    textarea:focus {
-        outline: none;
-        box-shadow: 0 0 10px var(--neon-primary);
-    }
-
-    input:invalid,
-    textarea:invalid {
-        border-color: var(--neon-secondary);
-        animation: shake 0.3s;
-    }
-
-    @keyframes shake {
-
-        0%,
-        100% {
-            transform: translateX(0);
-        }
-
-        25% {
-            transform: translateX(-10px);
-        }
-
-        75% {
-            transform: translateX(10px);
-        }
-    }
-
-    button {
-        background: transparent;
-        color: var(--neon-primary);
-        border: 1px solid var(--neon-primary);
-        padding: 0.8rem 2rem;
-        font-family: 'Orbitron', sans-serif;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: all 0.3s;
-        position: relative;
-        overflow: hidden;
-    }
-
-    button:hover {
-        background: var(--neon-primary);
-        color: var(--bg-dark);
-        box-shadow: 0 0 20px var(--neon-primary);
-    }
-
-    /* Footer */
-    footer {
-        text-align: center;
-        padding: 1rem;
-        background: rgba(0, 0, 0, 0.8);
-        border-top: 2px solid var(--neon-primary);
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-        nav ul {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        nav li {
-            margin: 0.5rem 0;
-        }
-
-        main {
-            margin: 1rem;
-            padding: 1rem;
-        }
-    }
-
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Orbitron', sans-serif;
+    background: var(--bg-dark);
+    color: #fff;
     line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Animated Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg,
+            transparent 48%,
+            rgba(0, 255, 255, 0.05) 50%,
+            transparent 52%);
+    background-size: 100px 100px;
+    animation: matrix 20s linear infinite;
+    z-index: -1;
 }
 
 /* Navegación */
 nav {
-    background-color: #333;
+    background: rgba(198, 192, 122, 0.8);
+    border-bottom: 2px solid var(--neon-primary);
     padding: 1rem;
+    position: relative;
+}
+
+nav::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--neon-primary);
+    filter: blur(5px);
 }
 
 nav ul {
@@ -408,57 +74,102 @@ nav ul {
 }
 
 nav a {
-    color: white;
+    color: #fff;
     text-decoration: none;
     padding: 0.5rem 1rem;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s;
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--neon-primary);
+    transition: width 0.3s;
 }
 
 nav a:hover {
-    background-color: #555;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    color: var(--neon-primary);
+    text-shadow: var(--text-glow);
+}
+
+nav a:hover::before {
+    width: 100%;
 }
 
 nav a.active {
-    background-color: #555;
-    border-radius: 4px;
+    color: var(--neon-primary);
+    text-shadow: var(--text-glow);
 }
 
 /* Contenido principal */
 main {
     max-width: 1200px;
     margin: 2rem auto;
-    padding: 0 1rem;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--neon-primary);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
 }
 
 h1 {
-    color: #333;
-    margin-bottom: 1rem;
-}
-
-section {
-    margin: 2rem 0;
-}
-
-/* Footer */
-footer {
-    background-color: #333;
-    color: white;
+    color: var(--neon-primary);
+    text-shadow: var(--text-glow);
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
     text-align: center;
-    padding: 1rem;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    animation: glitch 2s infinite;
 }
 
-/* Formulario */
+/* Tarjetas de servicio */
+.service-card {
+    border: 1px solid var(--neon-primary);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background: rgba(0, 0, 0, 0.5);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(0, 255, 255, 0.2),
+            transparent);
+    transition: 0.5s;
+}
+
+.service-card:hover::before {
+    left: 100%;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+/* Formularios */
 form {
     max-width: 600px;
     margin: 0 auto;
 }
 
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    position: relative;
 }
 
 label {
@@ -469,35 +180,148 @@ label {
 input,
 textarea {
     width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
+    padding: 0.8rem;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--neon-primary);
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--neon-primary);
+}
+
+input:invalid,
+textarea:invalid {
+    border-color: var(--neon-secondary);
+    animation: shake 0.3s;
 }
 
 button {
-    background-color: #333;
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
+    background: transparent;
+    color: var(--neon-primary);
+    border: 1px solid var(--neon-primary);
+    padding: 0.8rem 2rem;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
     cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
 }
 
 button:hover {
-    background-color: #555;
+    background: var(--neon-primary);
+    color: var(--bg-dark);
+    box-shadow: 0 0 20px var(--neon-primary);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav li {
-        margin: 0.5rem 0;
-    }
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.8);
+    border-top: 2px solid var(--neon-primary);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: white;
 }
 
-/* Team Member Styles */
+/* Componente Button con hover effect */
+.button {
+    margin: 0;
+    height: auto;
+    background: transparent;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    --border-right: 6px;
+    --text-stroke-color: rgb(255, 255, 255);
+    --animation-color: var(--neon-green);
+    --fs-size: 2em;
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-size: var(--fs-size);
+    font-family: "Arial";
+    position: relative;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+
+.hover-text {
+    position: absolute;
+    box-sizing: border-box;
+    content: attr(data-text);
+    color: var(--animation-color);
+    width: 0%;
+    inset: 0;
+    border-right: var(--border-right) solid var(--animation-color);
+    overflow: hidden;
+    transition: 0.5s;
+    -webkit-text-stroke: 1px var(--animation-color);
+}
+
+.button:hover .hover-text {
+    width: 100%;
+    filter: drop-shadow(0 0 23px var(--animation-color));
+}
+
+/* Componente Cards */
+.cards {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cards .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100px;
+    width: 250px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: 400ms;
+}
+
+.cards .red {
+    background-color: #142ebd;
+}
+
+.cards .blue {
+    background-color: #376619;
+}
+
+.cards .green {
+    background-color: #791717;
+}
+
+.cards .card p.tip {
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.cards .card p.second-text {
+    font-size: 0.7em;
+}
+
+.cards .card:hover {
+    transform: scale(1.1, 1.1);
+}
+
+.cards:hover > .card:not(:hover) {
+    filter: blur(10px);
+    transform: scale(0.9, 0.9);
+}
+
+/* Team Members */
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -534,7 +358,7 @@ button:hover {
     margin-top: 1rem;
 }
 
-/* Form Error Messages */
+/* Error messages */
 .error-message {
     display: none;
     color: var(--neon-secondary);
@@ -542,12 +366,12 @@ button:hover {
     margin-top: 0.5rem;
 }
 
-input:invalid+.error-message,
-textarea:invalid+.error-message {
+input:invalid + .error-message,
+textarea:invalid + .error-message {
     display: block;
 }
 
-/* Typing Effect */
+/* Typing effect */
 .typing-effect {
     overflow: hidden;
     border-right: 2px solid var(--neon-primary);
@@ -556,29 +380,7 @@ textarea:invalid+.error-message {
         blink-caret 0.75s step-end infinite;
 }
 
-@keyframes typing {
-    from {
-        width: 0
-    }
-
-    to {
-        width: 100%
-    }
-}
-
-@keyframes blink-caret {
-
-    from,
-    to {
-        border-color: transparent
-    }
-
-    50% {
-        border-color: var(--neon-primary)
-    }
-}
-
-/* New Promo Banner Styles */
+/* Promo banner */
 .promo-banner {
     background: linear-gradient(135deg, #0a0a15 0%, #1a1a2e 100%);
     border: 2px solid var(--neon-purple);
@@ -599,7 +401,7 @@ textarea:invalid+.error-message {
     animation: glitch 2s infinite;
 }
 
-/* Products Grid Enhancements */
+/* Products grid */
 .products-grid {
     display: grid;
     gap: 2rem;
@@ -615,91 +417,6 @@ textarea:invalid+.error-message {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-cON    .image-hover-effect {
-        position: relative;
-        overflow: hidden;
-        border-radius: 8px;
-        margin-bottom: 1.5rem;
-        transform-style: preserve-3d;
-        transition: transform 0.5s ease;
-    }
-    
-    .cyber-image {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-        border: 2px solid var(--neon-blue);
-        filter: grayscale(30%) contrast(110%);
-        transition: all 0.5s ease;
-    }
-    
-    .cyber-frame {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(45deg,
-            transparent 40%,
-            var(--neon-green) 50%,
-            transparent 60%);
-        animation: scan 4s linear infinite;
-        pointer-events: none;
-    }
-    
-    .hover-overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 255, 157, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    .glitch-text {
-        color: var(--neon-pink);
-        font-family: 'Courier New', monospace;
-        font-size: 1.2rem;
-        text-shadow: 2px 2px var(--neon-purple);
-        animation: glitch 1s infinite;
-    }
-    
-    /* Hover Effects */
-    .product-card:hover .cyber-image {
-        transform: scale(1.05) rotateZ(-1deg);
-        filter: grayscale(0%) contrast(120%);
-        box-shadow: 0 0 30px var(--neon-green);
-    }
-    
-    .product-card:hover .hover-overlay {
-        opacity: 1;
-    }
-    
-    .product-card:hover .image-hover-effect {
-        transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
-    }
-    
-    @keyframes scan {
-        0% { background-position: -100% 0; }
-        100% { background-position: 200% 0; }
-    }
-    
-    @keyframes glitch {
-        0% { text-shadow: 2px 2px var(--neon-purple); }
-        25% { text-shadow: -2px -2px var(--neon-blue); }
-        50% { text-shadow: 2px -2px var(--neon-pink); }
-        75% { text-shadow: -2px 2px var(--neon-green); }
-        100% { text-shadow: 2px 2px var(--neon-purple); }
-    }
-    
-    @media (max-width: 768px) {
-        .cyber-image {
-            height: 180px;
-        }
-        
-        .glitch-text {
-            font-size: 1rem;
-        }
-    }
 }
 
 .product-card:hover {
@@ -726,6 +443,56 @@ cON    .image-hover-effect {
     animation: shine 1.5s;
 }
 
+/* Imagen con efectos */
+.image-hover-effect {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+.cyber-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border: 2px solid var(--neon-blue);
+    filter: grayscale(30%) contrast(110%);
+    transition: all 0.5s ease;
+}
+
+.cyber-frame {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg,
+        transparent 40%,
+        var(--neon-green) 50%,
+        transparent 60%);
+    animation: scan 4s linear infinite;
+    pointer-events: none;
+}
+
+.hover-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 255, 157, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.glitch-text {
+    color: var(--neon-pink);
+    font-family: 'Courier New', monospace;
+    font-size: 1.2rem;
+    text-shadow: 2px 2px var(--neon-purple);
+    animation: glitch 1s infinite;
+}
+
+/* Precios */
 .price {
     color: var(--neon-green);
     font-size: 1.8rem;
@@ -740,31 +507,7 @@ cON    .image-hover-effect {
     margin-left: 1rem;
 }
 
-@keyframes shine {
-    0% { left: -50%; }
-    100% { left: 150%; }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .promo-banner {
-        padding: 1rem;
-        margin: 1rem 0;
-    }
-    
-    .neon-text {
-        font-size: 1.2rem;
-    }
-    
-    .product-card {
-        padding: 1.5rem;
-    }
-    
-    .price {
-        font-size: 1.4rem;
-    }
-}
-
+/* Testimonios y contacto */
 .testimonial-card {
     border-left: 3px solid var(--neon-primary);
     padding: 1rem;
@@ -793,7 +536,7 @@ cON    .image-hover-effect {
     text-shadow: var(--text-glow);
 }
 
-/* Form Confirmation */
+/* Formulario confirmación */
 .form-confirmation {
     display: none;
     padding: 2rem;
@@ -803,4 +546,101 @@ cON    .image-hover-effect {
 
 .form-confirmation.visible {
     display: block;
+}
+
+/* Efectos hover de productos */
+.product-card:hover .cyber-image {
+    transform: scale(1.05) rotateZ(-1deg);
+    filter: grayscale(0%) contrast(120%);
+    box-shadow: 0 0 30px var(--neon-green);
+}
+
+.product-card:hover .hover-overlay {
+    opacity: 1;
+}
+
+.product-card:hover .image-hover-effect {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+}
+
+/* Animaciones */
+@keyframes matrix {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+@keyframes glitch {
+    0% { text-shadow: var(--text-glow); }
+    2% { text-shadow: 2px 2px var(--neon-secondary); }
+    4% { text-shadow: -2px -2px var(--neon-primary); }
+    6% { text-shadow: var(--text-glow); }
+    100% { text-shadow: var(--text-glow); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--neon-primary); }
+}
+
+@keyframes shine {
+    0% { left: -50%; }
+    100% { left: 150%; }
+}
+
+@keyframes scan {
+    0% { background-position: -100% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        margin: 0.5rem 0;
+    }
+
+    main {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .promo-banner {
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+    
+    .neon-text {
+        font-size: 1.2rem;
+    }
+    
+    .product-card {
+        padding: 1.5rem;
+    }
+    
+    .price {
+        font-size: 1.4rem;
+    }
+
+    .cyber-image {
+        height: 180px;
+    }
+    
+    .glitch-text {
+        font-size: 1rem;
+    }
 }
