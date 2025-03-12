@@ -1,4 +1,4 @@
-# Mi Sitio Web Educativo
+# Mi Sitio Web
 
 Este es un proyecto web educativo que consta de cuatro páginas HTML interconectadas.
 
